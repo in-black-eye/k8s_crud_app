@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if notes %}
+        {% for note in notes %}
+            <div class="note">
+                <h3>{{ note.title }}</h3>
+                <p>{{ note.content }}</p>
+                <a href="{{ url_for('edit', note_id=note.id) }}">✏️ Редактировать</a>
+                <a href="{{ url_for('delete', note_id=note.id) }}" onclick="return confirm('Удалить?')">🗑️ Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет заметок.</p>
+    {% endif %}
+{% endblock %}

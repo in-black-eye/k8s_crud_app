@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{% if note %}Редактировать заметку{% else %}Новая заметка{% endif %}</h2>
+    <form method="POST">
+        <p>
+            <label>Заголовок:</label><br>
+            <input type="text" name="title" value="{{ note.title if note else '' }}" required>
+        </p>
+        <p>
+            <label>Содержание:</label><br>
+            <textarea name="content" rows="5" cols="50" required>{{ note.content if note else '' }}</textarea>
+        </p>
+        <button type="submit">Сохранить</button>
+        <a href="{{ url_for('index') }}">Отмена</a>
+    </form>
+{% endblock %}
