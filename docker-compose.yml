@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   crud_app:
     build: .
