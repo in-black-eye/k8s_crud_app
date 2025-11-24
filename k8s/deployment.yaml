@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crud-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-app
+  template:
+    metadata:
+      labels:
+        app: crud-app
+    spec:
+      volumes:
+        - name: notes-storage
+          persistentVolumeClaim:
+            claimName: crud-app-pvc
+      containers:
+        - name: crud-app
+          image: inblackeye/crud_app:latest
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: notes-storage
+              mountPath: /app
