@@ -1,7 +1,0 @@
-services:
-  crud_app:
-    build: .
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./notes.db:/app/notes.db
